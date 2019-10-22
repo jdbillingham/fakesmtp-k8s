@@ -1,0 +1,23 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: fakesmtp
+  labels:
+    name: fakesmtp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: fakesmtp
+  template:
+    metadata:
+      name: fakesmtp
+      labels:
+        name: fakesmtp
+    spec:
+      containers:
+        - name: fakesmtp
+          image: gcr.io/devops-test-228018/fakesmtp:latest
+          resources: {}
+          ports:
+            - containerPort: 25
